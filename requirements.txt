@@ -3,7 +3,14 @@ robotframework-seleniumlibrary>=6.0
 selenium>=4.8
 webdriver-manager>=4.0
 
+# Dépendances optionnelles pour fonctionnalités supplémentaires
+# (Note: csv est inclus dans la stdlib Python, pas besoin d'installer)
+
 # Notes:
-# - This Robot Framework test uses SeleniumLibrary and Chrome; include a Chrome WebDriver on PATH
-#   or let webdriver-manager handle the driver (the package included above).
-# - Adjust versions if your environment requires different major/minor releases.
+# - SeleniumLibrary et Chrome: assurez-vous d'avoir Chrome installé et un chromedriver accessible
+#   via webdriver-manager (inclus) ou via le PATH.
+# - CSV: le module csv est inclus dans Python stdlib. Le support CSV dans index.robot utilise
+#   l'évaluation Python native (Evaluate keyword) pour lire les fichiers CSV.
+# - Ajustez les versions selon vos besoins de compatibilité.
+# - Pour exécuter les tests: robot index.robot
+# - Pour charger des données CSV: Load Form Fields From CSV    data/form_data.csv    0

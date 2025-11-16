@@ -116,6 +116,43 @@ Si votre suite utilise la variable `${URL}`, vous pouvez la passer ainsi :
 robot --variable URL:http://example.com .\index.robot
 ```
 
+## Utiliser des données CSV
+
+Le projet inclut un mot-clé Robot Framework pour charger les valeurs des champs de formulaire depuis un fichier CSV.
+
+### Structure du fichier CSV
+
+Le fichier CSV doit avoir une en-tête avec au minimum les colonnes `FORM_FIELD_1` et `FORM_FIELD_2` :
+
+```csv
+FORM_FIELD_1,FORM_FIELD_2,repair_date,reference_number,product_kind,brand,build_year,cause_of_fault,repairer,fault_description
+2024-01-15,REF-001,2024-01-15,REF-001,Refrigerator,LG,2018,Compressor not starting,John Doe,No cooling
+2024-02-20,REF-002,2024-02-20,REF-002,Washing Machine,Samsung,2019,Motor noise,Jane Smith,Unusual vibration
+2024-03-10,REF-003,2024-03-10,REF-003,Dishwasher,Bosch,2020,Water leakage,Mike Johnson,Leak under door
+```
+
+Un fichier exemple est fourni : `data/form_data.csv`
+
+### Utiliser le mot-clé `Load Form Fields From CSV` dans Robot Framework
+
+Dans `index.robot`, vous pouvez charger les données avant d'exécuter le formulaire :
+
+```robotframework
+*** Test Cases ***
+Fill Drupal Form With CSV Data
+    Load Form Fields From CSV    data/form_data.csv    0
+    Open Browser    ${URL}    Chrome
+    Maximize Browser Window
+    Fill Form Fields
+    Close Browser
+```
+
+**Paramètres du mot-clé :**
+- `csv_file` (obligatoire) : Chemin vers le fichier CSV (absolu ou relatif au répertoire courant)
+- `row_index` (optionnel, défaut = 0) : Index de la ligne de données à charger (0 = première ligne après l'en-tête)
+
+Le mot-clé définit automatiquement les variables globales `${FORM_FIELD_1}` et `${FORM_FIELD_2}` avec les valeurs du fichier CSV.
+
 ## ChromeDriver / WebDriver
 
 Deux options courantes pour le driver Chrome :

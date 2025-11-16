@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Library    Collections
 
 *** Variables ***
 ${URL}     NO_URL_PROVIDED
@@ -47,3 +48,13 @@ Fill Form Fields
 
 Submit Form
     Click Button    id=edit-submit
+
+Load Form Fields From CSV
+    [Documentation]    Charge les valeurs de FORM_FIELD_1 et FORM_FIELD_2 depuis un fichier CSV.
+    ...    Usage: Load Form Fields From CSV    data/form_data.csv    0
+    [Arguments]    ${csv_file}    ${row_index}=0
+    ${rows}=    Evaluate    list(__import__('csv').DictReader(open('${csv_file}', encoding='utf-8')))
+    ${row}=    Evaluate    ${rows}[${row_index}]
+    Set Global Variable    ${FORM_FIELD_1}    ${row}[FORM_FIELD_1]
+    Set Global Variable    ${FORM_FIELD_2}    ${row}[FORM_FIELD_2]
+    Log    Champs CSV chargés (ligne ${row_index}): FORM_FIELD_1=${FORM_FIELD_1}, FORM_FIELD_2=${FORM_FIELD_2}
