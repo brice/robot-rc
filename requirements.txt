@@ -1,0 +1,9 @@
+robotframework>=5.0
+robotframework-seleniumlibrary>=6.0
+selenium>=4.8
+webdriver-manager>=4.0
+
+# Notes:
+# - This Robot Framework test uses SeleniumLibrary and Chrome; include a Chrome WebDriver on PATH
+#   or let webdriver-manager handle the driver (the package included above).
+# - Adjust versions if your environment requires different major/minor releases.
