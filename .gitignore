@@ -2,3 +2,4 @@
 *.xml
 *.png
 lib/csv_reader.py
+.env

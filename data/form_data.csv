@@ -1,4 +1,4 @@
-FORM_FIELD_1,FORM_FIELD_2,repair_date,reference_number,product_kind,brand,build_year,cause_of_fault,repairer,fault_description
-2024-01-15,REF-001,2024-01-15,REF-001,Refrigerator,LG,2018,Compressor not starting,John Doe,No cooling
+repair_date,category,reference_number,product_kind,brand,build_year,cause_of_fault,repairer,fault_description
+2024-01-15,REF-001,Refrigerator,LG,2018,Compressor not starting,John Doe,No cooling
 2024-02-20,REF-002,2024-02-20,REF-002,Washing Machine,Samsung,2019,Motor noise,Jane Smith,Unusual vibration
 2024-03-10,REF-003,2024-03-10,REF-003,Dishwasher,Bosch,2020,Water leakage,Mike Johnson,Leak under door

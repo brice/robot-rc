@@ -122,16 +122,8 @@ Le projet inclut un mot-clé Robot Framework pour charger les valeurs des champs
 
 ### Structure du fichier CSV
 
-Le fichier CSV doit avoir une en-tête avec au minimum les colonnes `FORM_FIELD_1` et `FORM_FIELD_2` :
+TODO
 
-```csv
-FORM_FIELD_1,FORM_FIELD_2,repair_date,reference_number,product_kind,brand,build_year,cause_of_fault,repairer,fault_description
-2024-01-15,REF-001,2024-01-15,REF-001,Refrigerator,LG,2018,Compressor not starting,John Doe,No cooling
-2024-02-20,REF-002,2024-02-20,REF-002,Washing Machine,Samsung,2019,Motor noise,Jane Smith,Unusual vibration
-2024-03-10,REF-003,2024-03-10,REF-003,Dishwasher,Bosch,2020,Water leakage,Mike Johnson,Leak under door
-```
-
-Un fichier exemple est fourni : `data/form_data.csv`
 
 ### Utiliser le mot-clé `Load Form Fields From CSV` dans Robot Framework
 
@@ -148,10 +140,12 @@ Fill Drupal Form With CSV Data
 ```
 
 **Paramètres du mot-clé :**
+
 - `csv_file` (obligatoire) : Chemin vers le fichier CSV (absolu ou relatif au répertoire courant)
 - `row_index` (optionnel, défaut = 0) : Index de la ligne de données à charger (0 = première ligne après l'en-tête)
+- `delimiter` (optionnel, défaut = ,) : Délimiteur des champs dans le fichier CSV
 
-Le mot-clé définit automatiquement les variables globales `${FORM_FIELD_1}` et `${FORM_FIELD_2}` avec les valeurs du fichier CSV.
+Le mot-clé définit automatiquement des variables globales avec les valeurs du fichier CSV.
 
 ## ChromeDriver / WebDriver
 
