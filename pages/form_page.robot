@@ -7,6 +7,7 @@ ${CATEGORY_INPUT_ID}           edit-field-categorie
 ${PRODUCT_REPAIRED_YES_ID}     edit-field-product-repaired-yes
 ${PRODUCT_REPAIRED_NO_ID}      edit-field-product-repaired-no
 ${PRODUCT_REPAIRED_HALF_ID}    edit-field-product-repaired-half
+${EDIT_SUBMIT_BUTTON_ID}       edit-submit
 
 ## Les identifiants de la catégorie sont mappés ici pour une utilisation facile
 ## Ils sont basés sur les labels des catégories du site repairmonitor
@@ -23,4 +24,7 @@ ${PRODUCT_REPAIRED_HALF_ID}    edit-field-product-repaired-half
 ...                     Pendules, horloges et réveils=18706
 ...                     Textiles=1684
 ...                     Vélos=1679
+### Variantes pour le RC Jacou/Clapiers
+...                     vélo=1679
 ...                     Électroménager=1678
+...                     Electroménager=1678
