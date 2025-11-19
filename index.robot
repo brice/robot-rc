@@ -26,7 +26,6 @@ ${CATEGORY}              UNKNOWN
 
 *** Test Cases ***
 Fill Drupal Form
-
     Load Form Fields From CSV    ${DATA_FILE}    ${INDEX}    ${DELIMITER}
     Open Browser    ${URL}    Chrome
     Maximize Browser Window
@@ -58,9 +57,10 @@ Fill Form Fields
         Sleep    1000ms
 
         Input Text    id=${KIND_PRODUCT_INPUT_ID}   ${KIND_PRODUCT}
-        Sleep    15000ms
+        Sleep    5000ms
 
         Execute Javascript    document.getElementById('${BRAND_INPUT_ID}').value='${BRAND}';
+        Sleep    5000ms
 
         IF    '${STATUS}' == 'réparé'
             Execute Javascript    document.getElementById('${PRODUCT_REPAIRED_YES_ID}').click();
@@ -101,6 +101,10 @@ Load Form Fields From CSV
     Set Global Variable    ${STATUS}    ${row}[Réparé ?]
     ${CATEGORY}=    Get Category ID    ${row}[Catégorie]
     Set Global Variable    ${CATEGORY}
+
+    IF    '${row}[Marque]' != ''
+        Set Global Variable    ${BRAND}    ${row}[Marque]
+    END
 
     Log To Console  Variables chargées du fichier ${csv_file} REFERENCE_NUMBER=${REFERENCE_NUMBER}, REPAIR_DATE=${REPAIR_DATE}, CATEGORY=${CATEGORY}, KIND_PRODUCT=${KIND_PRODUCT}, STATUS=${STATUS}
 

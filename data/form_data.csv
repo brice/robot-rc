@@ -1,4 +1,47 @@
-repair_date,category,reference_number,product_kind,brand,build_year,cause_of_fault,repairer,fault_description
-2024-01-15,REF-001,Refrigerator,LG,2018,Compressor not starting,John Doe,No cooling
-2024-02-20,REF-002,2024-02-20,REF-002,Washing Machine,Samsung,2019,Motor noise,Jane Smith,Unusual vibration
-2024-03-10,REF-003,2024-03-10,REF-003,Dishwasher,Bosch,2020,Water leakage,Mike Johnson,Leak under door
+Date,Catégorie,Appareil concerné,Poids,Réparé ?,Marque
+samedi 5 octobre ,Equipement/outil,visseuse,1.5,réparé
+samedi 5 octobre ,Electroménager,Radio,0.5,réparé
+samedi 5 octobre ,Electroménager,centrale vapeur,3,non réparable
+samedi 5 octobre ,Electroménager,aspirateur,4.5,réparé
+samedi 5 octobre ,Electroménager,hachoir manuel,0.5,non réparable
+samedi 5 octobre ,Electroménager,bouilloire,1,réparé,
+samedi 5 octobre ,Electroménager,machine à café,1,réparé,Senseo
+samedi 5 octobre ,Equipement/ outil,centrale vapeur,3,non réparable,Karcher
+samedi 5 octobre ,Electroménager,micro-onde,5,réparé
+samedi 5 octobre ,Electroménager,Machine à café,3,réparé,Delonghi
+samedi 5 octobre ,Equipement/ outil,appareil photo,0.3,réparé,Polaroid
+samedi 5 octobre ,Electroménager,Appareil chauffe-cire,1.5,réparé
+samedi 5 octobre ,Equipement/ outil,ordinateur portable,1,réparé
+samedi 5 octobre ,Electroménager,micro-onde,10,réparé
+samedi 5 octobre ,Couture,doudoune enfant,0.7,réparé
+samedi 5 octobre ,Equipement/ outil,imprimante laser,15,réparable
+samedi 5 octobre ,Equipement/ outil,radiateur à bain d'huile,9,réparable,ACOVA
+samedi 5 octobre ,Electroménager,radio-réveil avec lampe,1,réparable
+samedi 5 octobre ,Electroménager,gazinière,50,réparé
+samedi 5 octobre ,Equipement/ outil,Taille-haie électrique,3,réparé
+samedi 5 octobre ,vélo,vélo électrique,12,réparé
+samedi 5 octobre ,Electroménager,aspirateur,7,non réparable
+samedi 5 octobre ,Equipement/ outil,Moteur d'appareil brassage miel,20,réparable
+samedi 5 octobre ,Electroménager,machine à café,4.5,réparable,Senseo
+samedi 5 octobre ,Equipement/ outil,Balance (grosse),12,réparé
+samedi 5 octobre ,Electroménager,aspirateur,5,non réparable
+samedi 5 octobre ,Couture,pantalon,0.3,réparé
+samedi 5 octobre ,Couture,T-shirt,0.2,réparé
+samedi 5 octobre ,Couture,pantacourt,0.3,réparé
+samedi 5 octobre ,Couture,lingerie,0.1,réparé
+samedi 5 octobre ,Equipement/ outil,Tablette,0.5,réparable,Apple
+samedi 5 octobre ,Couture,pantacourt,0.3,réparé
+samedi 5 octobre ,Electroménager,ouvre-boîte électrique,1,réparéVél
+samedi 5 octobre ,Couture,pantalon,0.5,réparé
+samedi 5 octobre ,Equipement/ outil,Play station 2,1,non réparable,Sony
+samedi 5 octobre ,vélo,Phare vélo,0.1,réparable
+samedi 5 octobre ,Electroménager,grille-pain,1,réparé
+samedi 5 octobre ,Couture,short,0.1,réparé
+samedi 5 octobre ,Electroménager,kit massage,0.3,non réparable
+samedi 5 octobre ,Electroménager,câble aspirateur,0.5,réparé
+samedi 5 octobre ,Electroménager,Régulateur de chaleur - prise,0.3,réparé
+samedi 5 octobre ,Equipement/ outil,Baffle,3,réparable
+samedi 5 octobre ,Electroménager,Lampe,0.2,réparé
+samedi 5 octobre ,Electroménager,aspirateur,4,non réparable
+samedi 5 octobre ,vélo,pneus,12,réparé
+samedi 5 octobre ,vélo,dérailleur et rayons,12,réparable

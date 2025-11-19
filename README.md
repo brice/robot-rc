@@ -104,17 +104,12 @@ sudo apt install chromium-chromedriver
 
 ## Lancer les tests
 
-Vous pouvez lancer le test Robot principal (`index.robot`) ainsi :
+Vous pouvez lancer le test Robot principal (`index.robot`) ainsi, en mettant les variables de connexion USERNAME et PASSWORD. Pour le moment, le traitement des fichiers n'est pas totalement automatisé et il convient d'ajouter également la variavble INDEX indiquant la ligne du fichier CSV à traiter (attention la ligne 0 est la première ligne de données).
 
 ```powershell
-robot .\index.robot
+robot --variable USERNAME:"Nom d'utilisateur" --variable PASSWORD:"mon mot de passe" --variable INDEX:0  .\index.robot
 ```
 
-Si votre suite utilise la variable `${URL}`, vous pouvez la passer ainsi :
-
-```powershell
-robot --variable URL:http://example.com .\index.robot
-```
 
 ## Utiliser des données CSV
 
