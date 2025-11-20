@@ -102,11 +102,11 @@ Load Form Fields From CSV
     ${CATEGORY}=    Get Category ID    ${row}[Catégorie]
     Set Global Variable    ${CATEGORY}
 
-    IF    '${row}[Marque]' != ''
+    IF    '${row}[Marque]' != 'None'
         Set Global Variable    ${BRAND}    ${row}[Marque]
     END
 
-    Log To Console  Variables chargées du fichier ${csv_file} REFERENCE_NUMBER=${REFERENCE_NUMBER}, REPAIR_DATE=${REPAIR_DATE}, CATEGORY=${CATEGORY}, KIND_PRODUCT=${KIND_PRODUCT}, STATUS=${STATUS}
+    Log To Console  Variables chargées du fichier ${csv_file} REFERENCE_NUMBER=${REFERENCE_NUMBER}, REPAIR_DATE=${REPAIR_DATE}, CATEGORY=${CATEGORY}, KIND_PRODUCT=${KIND_PRODUCT}, STATUS=${STATUS}, BRAND=${BRAND}
 
 Get Category ID
     [Arguments]    ${CATEGORY_NAME}
