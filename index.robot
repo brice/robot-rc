@@ -2,6 +2,8 @@
 Library    SeleniumLibrary
 Library    Collections
 Library    Dialogs
+Library    OperatingSystem
+Library    String
 
 Resource    pages/form_page.robot
 *** Variables ***
@@ -9,6 +11,9 @@ ${URL}          https://www.repairmonitor.org/fr/
 ${DATA_FILE}    data/form_data.csv
 ## Index de la ligne à utiliser dans le fichier CSV (0 pour la première ligne de données)
 ${INDEX}        0
+## Variables permettant de traiter une partie du fichier
+${FROM}         ${EMPTY}
+${TO}           ${EMPTY}
 ${DELIMITER}    ,
 
 ## Variables de connexion à surcharger dans la ligne de commande
@@ -22,21 +27,38 @@ ${KIND_PRODUCT}          Refrigerator
 ${STATUS}                Pending
 ${BRAND}                 Inconnue/s.o.
 ${CATEGORY}              UNKNOWN
-
+${CATEGORY_NAME}         UNKNOWN
+${FORM_KIND_PRODUCT}     Refrigerator
 
 *** Test Cases ***
-Fill Drupal Form
-    Load Form Fields From CSV    ${DATA_FILE}    ${INDEX}    ${DELIMITER}
+Fill Repair Monitor Form
     Open Browser    ${URL}    Chrome
     Maximize Browser Window
     Login To Drupal
     Navigate To Form Page
-    Fill Form Fields
-    Submit Form
-    Verify Creation
+
+    IF  '${FROM}' != '${EMPTY}' and '${TO}' != '${EMPTY}'
+        ${TO_INT}=    Evaluate    int(${TO}) + 1
+        FOR    ${INDEX}    IN RANGE    ${FROM}    ${TO_INT}
+            Log To Console    Processing index ${INDEX}
+            Load Form Fields From CSV    ${DATA_FILE}    ${INDEX}    ${DELIMITER}
+            Fill Form Fields
+            Submit Form
+            Verify Creation
+            Log Form Data To CSV
+        END
+    ELSE
+        Load Form Fields From CSV    ${DATA_FILE}    ${INDEX}    ${DELIMITER}
+        Fill Form Fields
+        Submit Form
+        Verify Creation
+        Log Form Data To CSV
+    END
     Close Browser
 
 *** Keywords ***
+
+
 Login To Drupal
     Input Text    id=edit-name    ${USERNAME}
     Input Password    id=edit-pass    ${PASSWORD}
