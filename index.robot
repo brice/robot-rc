@@ -81,6 +81,10 @@ Fill Form Fields
         Input Text    id=${KIND_PRODUCT_INPUT_ID}   ${KIND_PRODUCT}
         Sleep    5000ms
 
+        ${FORM_KIND_PRODUCT}=    Execute Javascript    return document.getElementById('${KIND_PRODUCT_INPUT_ID}').value;
+        Set Global Variable    ${FORM_KIND_PRODUCT}
+        Log To Console    KIND_PRODUCT after input: ${FORM_KIND_PRODUCT}
+
         Execute Javascript    document.getElementById('${BRAND_INPUT_ID}').value='${BRAND}';
         Sleep    5000ms
 
@@ -116,16 +120,20 @@ Load Form Fields From CSV
     # Variables récupérées depuis le CSV
     ${rows}=    Evaluate    list(__import__('csv').DictReader(open('${csv_file}', encoding='utf-8'), delimiter='${delimiter}'))
     ${row}=    Get From List   ${rows}     ${row_index}
+    Log To Console    ${row}[Marque]
 
     # Pour le moment la date de réparation est fixée dans le code en attendant la gestion des formats de date
     # Set Global Variable    ${REPAIR_DATE}    ${row}[0]
     Set Global Variable    ${KIND_PRODUCT}    ${row}[Appareil concerné]
     Set Global Variable    ${STATUS}    ${row}[Réparé ?]
-    ${CATEGORY}=    Get Category ID    ${row}[Catégorie]
+    Set Global Variable    ${CATEGORY_NAME}    ${row}[Catégorie]
+    ${CATEGORY}=    Get Category ID    ${CATEGORY_NAME}
     Set Global Variable    ${CATEGORY}
 
     IF    '${row}[Marque]' != 'None'
         Set Global Variable    ${BRAND}    ${row}[Marque]
+    ELSE
+        Set Global Variable    ${BRAND}    Inconnue/s.o.
     END
 
     Log To Console  Variables chargées du fichier ${csv_file} REFERENCE_NUMBER=${REFERENCE_NUMBER}, REPAIR_DATE=${REPAIR_DATE}, CATEGORY=${CATEGORY}, KIND_PRODUCT=${KIND_PRODUCT}, STATUS=${STATUS}, BRAND=${BRAND}
@@ -147,3 +155,31 @@ Verify Creation
      [Arguments]    ${message}=a été créé.    ${timeout}=10s
      Wait Until Page Contains    ${message}    timeout=${timeout}    error=Le message "${message}" n'a pas été trouvé sur la page après ${timeout}
      Log    Message trouvé: ${message}
+
+
+Log Form Data To CSV
+    [Documentation]    Enregistre les données du formulaire dans un fichier CSV.
+    [Arguments]    ${output_file}=data/form_submissions.csv
+
+    ${headers}=    Create List    REFERENCE             DATE_REPARATION   CATEGORIE_INITIALE    REPAIR_MONITOR_CATEGORIE_ID    RC_APPAREIL        REPAIR_MONITOR_APPAREIL    STATUS      BRAND
+    ${data}=       Create List    ${REFERENCE_NUMBER}   ${REPAIR_DATE}    ${CATEGORY_NAME}      ${CATEGORY}                    ${KIND_PRODUCT}    ${FORM_KIND_PRODUCT}       ${STATUS}   ${BRAND}
+
+    ${file_exists}=    Evaluate    __import__('os').path.exists('${output_file}')
+
+    IF    not ${file_exists}
+        ${header_string}  Convert List To Delimeter Separated String   ${headers}
+        Create File     ${output_file}
+        Append To File  ${output_file}      ${header_string}
+    END
+
+    ${data_string}  Convert List To Delimeter Separated String   ${data}
+    Append To File  ${output_file}      ${data_string}
+
+    Log To Console    Données enregistrées dans ${output_file}
+
+Convert List To Delimeter Separated String
+    [Documentation]  Converts list values to string so they can be appended to csv file
+    [Arguments]  ${values}
+    ${converted_values}  Evaluate  "${DELIMITER} ".join(${values})
+    # ${converted_values}=   Encode String To Bytes    ${converted_values}   encoding=UTF-8
+    RETURN    ${converted_values}
